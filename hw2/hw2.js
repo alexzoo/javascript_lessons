@@ -4,13 +4,18 @@
 // Выведите на экран все дни недели, каждый из них с новой строчки, а выходные дни - жирным шрифтом. Текущий день - курсивом (пока можно задать текущий день вручную, без работы с объектом даты)
 
 let weekdays = ['понедельник', 'вторник', 'среда', 'четверг', 'пятница', 'суббота', 'воскресенье'],
-   output = document.querySelector('.output');
+   output = document.querySelector('.output'),
+   current = 'вторник';
 
 
 function printWeekdays() {
-   for (let i = 0; i < weekdays.length - 1; i++) {
-      if (weekdays.indexOf('суббота') || weekdays.indexOf('воскресенье')) {
+   for (let i = 0; i < weekdays.length; i++) {
+      if (weekdays[i].substring(0, 2) == 'су' || weekdays[i].substring(0, 2) == 'во') {
          output.innerHTML += '<b>' + weekdays[i] + '</b>' + '<br>';
+         continue;
+      } else if (weekdays[i] === current) {
+         output.innerHTML += '<i>' + weekdays[i] + '</i>' + '<br>';
+         continue;
       }
       output.innerHTML += weekdays[i] + '<br>';
    }
