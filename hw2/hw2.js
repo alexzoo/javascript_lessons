@@ -5,19 +5,20 @@
 
 let weekdays = ['понедельник', 'вторник', 'среда', 'четверг', 'пятница', 'суббота', 'воскресенье'],
    output = document.querySelector('.output'),
-   current = 'среда';
+   current = 'воскресенье';
 
 
 function printWeekdays() {
    for (let i = 0; i < weekdays.length; i++) {
-      if (weekdays[i].substring(0, 2) == 'су' || weekdays[i].substring(0, 2) == 'во') {
-         output.innerHTML += '<b>' + weekdays[i] + '</b>' + '<br>';
-         continue;
-      } else if (weekdays[i] === current) {
+      if (weekdays[i] === current) {
          output.innerHTML += '<i>' + weekdays[i] + '</i>' + '<br>';
          continue;
-      }
-      output.innerHTML += weekdays[i] + '<br>';
+      } else
+         if (weekdays[i].substring(0, 2) == 'су' || weekdays[i].substring(0, 2) == 'во') {
+            output.innerHTML += '<b>' + weekdays[i] + '</b>' + '<br>';
+            continue;
+         } else
+            output.innerHTML += weekdays[i] + '<br>';
    }
 }
 
