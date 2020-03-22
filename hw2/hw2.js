@@ -5,7 +5,7 @@
 
 let weekdays = ['понедельник', 'вторник', 'среда', 'четверг', 'пятница', 'суббота', 'воскресенье'],
    output = document.querySelector('.output'),
-   current = 'вторник';
+   current = 'среда';
 
 
 function printWeekdays() {
