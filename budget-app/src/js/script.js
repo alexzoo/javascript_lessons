@@ -29,17 +29,23 @@ let money, time;
 
 
 // Если программа еще не запущена( не нажали кнопку "Начать расчет") - сделать кнопки неактивными.
-function disableAllBtns() {
+function disableBtns() {
     allBtns.forEach(function (item) {
-        allBtns[item].disabled = true;
+        item.disabled = true;
     });
     startBtn.disabled = false;
 }
 
-disableAllBtns();
+disableBtns();
+
 
 
 startBtn.addEventListener('click', function () {
+    // enable btns
+    allBtns.forEach(function (item) {
+        item.disabled = false;
+    });
+
     time = prompt("Введите дату в формате YYYY-MM-DD", '');
     money = +prompt("Ваш бюджет на месяц?", '');
 
@@ -54,8 +60,9 @@ startBtn.addEventListener('click', function () {
     dayValue.value = new Date(Date.parse(time)).getDate();
 });
 
+let sumExpenses = 0;
 expensesBtn.addEventListener('click', function () {
-    let sum = 0;
+    // let sum = 0;
 
     for (let i = 0; i < expensesItem.length; i++) {
         let a = expensesItem[i].value,
@@ -64,12 +71,12 @@ expensesBtn.addEventListener('click', function () {
         if (typeof (a) === 'string' && typeof (a) != null && typeof (b) != null && a != "" && b != "" && a.length < 50) {
             levelValue.textContent = 'Все верно';
             appData.expenses[a] = b;
-            sum += +b;
+            sumExpenses += +b;
         } else {
             i--;
         }
     }
-    expensesValue.textContent = sum;
+    expensesValue.textContent = sumExpenses;
 });
 
 optionalExpensesBtn.addEventListener('click', function () {
@@ -80,10 +87,15 @@ optionalExpensesBtn.addEventListener('click', function () {
     }
 });
 
+
+// Реализовать функционал: при расчете дневного бюджета учитывать сумму обязательных трат (т. e. от бюджета на месяц отнимаем общую сумму всех обяз. трат и ее делим на 30 дней)
+
+//сделал через глобальную переменную sumExpenses
+
 countBtn.addEventListener('click', function () {
 
     if (appData.budget != undefined) {
-        appData.moneyPerDay = (appData.budget / 30).toFixed();
+        appData.moneyPerDay = ((appData.budget - sumExpenses) / 30).toFixed();
         dayBudgetValue.textContent = appData.moneyPerDay;
 
         if (appData.moneyPerDay < 100) {
