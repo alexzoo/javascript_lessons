@@ -22,9 +22,22 @@ let startBtn = document.getElementById("start"),
     percentValue = document.querySelector('.choose-percent'),
     yearValue = document.querySelector('.year-value'),
     monthValue = document.querySelector('.month-value'),
-    dayValue = document.querySelector('.day-value');
+    dayValue = document.querySelector('.day-value'),
+    allBtns = document.querySelectorAll('button');
 
 let money, time;
+
+
+// Если программа еще не запущена( не нажали кнопку "Начать расчет") - сделать кнопки неактивными.
+function disableAllBtns() {
+    allBtns.forEach(function (item) {
+        allBtns[item].disabled = true;
+    });
+    startBtn.disabled = false;
+}
+
+disableAllBtns();
+
 
 startBtn.addEventListener('click', function () {
     time = prompt("Введите дату в формате YYYY-MM-DD", '');
@@ -131,5 +144,6 @@ let appData = {
     expenses: {},
     optionalExpenses: {},
     income: [],
-    savings: true
+    savings: false
 };
+
