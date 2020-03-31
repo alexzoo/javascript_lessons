@@ -13,17 +13,22 @@ function createArr() {
       }
    }
    console.log('Создали массив: ' + arr);
-   console.log('Сумма элементов массива: ' + sumArr(arr));
+   console.log('Суммы элементов массива: ' + sumArr(arr));
 }
 
 function sumArr(arr) {
-   let sum = 0;
+   let sum = 0,
+      sum2 = 0;
    for (let i = 0; i < arr.length; i++) {
+      let result1 = arr.reduce((sum, current) => sum + current, 0);
       for (let j = 0; j < arr.length; j++) {
          sum += arr[i][j];
+         let result2 = arr.reduce((sum, current) => sum + current, result1);
+         sum2 = result2;
       }
    }
-   return sum;
+   return sum, sum2;
 }
 
 createArr();
+
