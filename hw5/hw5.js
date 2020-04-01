@@ -36,10 +36,9 @@ let oneDate = document.getElementsByClassName('first'),
 
 btn.addEventListener('click', function () {
    let res,
-      firstDate = new Date(oneDate.value),
-      secondDate = new Date(twoDate.value);
+      firstDate = new Date(oneDate[0].value),
+      secondDate = new Date(twoDate[0].value);
 
    res = Math.ceil(Math.abs(secondDate.getTime() - firstDate.getTime()) / (1000 * 3600 * 24));
-
-   output.textContent = res;
+   output[0].value = res + ' дней';
 });
