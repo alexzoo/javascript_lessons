@@ -38,11 +38,18 @@ window.addEventListener('DOMContentLoaded', function() {
 
 	let dedline = '2020-04-10';
 
+	// 	Изменить скрипт так, чтобы в таком случае выводилось: 00:00:00
+	//  Необходимо подставлять 0 перед значениями, которые состоят из одной цифры (из 4:6:50 сделает 04:06:50)
+
+	function addZero(num) {
+		return num < 10 ? '0' + num : num;
+	}
+
 	function getTimeReamining(endtime) {
 		let t = Date.parse(endtime) - Date.parse(new Date()),
-			seconds = Math.floor((t / 1000) % 60),
-			minutes = Math.floor((t / 1000 / 60) % 60),
-			hours = Math.floor(t / (1000 * 60 * 60));
+			seconds = addZero(Math.floor((t / 1000) % 60)),
+			minutes = addZero(Math.floor((t / 1000 / 60) % 60)),
+			hours = addZero(Math.floor(t / (1000 * 60 * 60)));
 
 		return {
 			total: t,
