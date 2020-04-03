@@ -100,17 +100,13 @@ window.addEventListener('DOMContentLoaded', function() {
 
 	// 2) Привязать модальное окно к кнопкам “Узнать подробнее” в табах. Код не должен дублироваться.
 
-	let buttonsBlock = document.querySelector('.description');
+	let buttonsBlock = document.querySelectorAll('.description-btn');
 
-	buttonsBlock.addEventListener('click', function(event) {
-		if (
-			event.target &&
-			event.target.classList.contains('description-btn')
-		) {
-			console.log(event.target);
+	buttonsBlock.forEach(function(item) {
+		item.addEventListener('click', function(event) {
 			overlay.style.display = 'block';
 			this.classList.add('more-splash');
 			document.body.style.overflow = 'hidden';
-		}
+		});
 	});
 });
