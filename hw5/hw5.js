@@ -54,5 +54,5 @@ function showUser(surname, name) {
 
 // showUser.apply(age, ['Пупкин', 'Вася']);
 
-let newFunc = showUser.bind(age, 'Пупкин', 'Вася');
-newFunc();
+let boundShowUser = showUser.bind(age, 'Пупкин', 'Вася');
+boundShowUser();
