@@ -14,7 +14,6 @@
 
 // console.log(hours + ':' + minutes + ':' + seconds + ' ' + day + '.' + month + '.' + year);
 
-
 // // Напишите функцию, которая выводит на страницу текущий день недели на русском языке (реализацию выбираете сами)
 
 // function dateToRu() {
@@ -24,21 +23,33 @@
 
 // dateToRu();
 
-
 // // Напишите функцию, которая выводит на страницу разницу между двумя датами в количестве дней
 
 // // На странице создайте интерфейс для её отображения: как минимум - 3 input’a: для двух ввода дат и вывода результата.
 
-let oneDate = document.getElementsByClassName('first'),
-   twoDate = document.getElementsByClassName('second'),
-   output = document.getElementsByClassName('output'),
-   btn = document.getElementsByClassName('btn')[0];
+// let oneDate = document.getElementsByClassName('first'),
+// 	twoDate = document.getElementsByClassName('second'),
+// 	output = document.getElementsByClassName('output'),
+// 	btn = document.getElementsByClassName('btn')[0];
 
-btn.addEventListener('click', function () {
-   let res,
-      firstDate = new Date(oneDate[0].value),
-      secondDate = new Date(twoDate[0].value);
+// btn.addEventListener('click', function() {
+// 	let res,
+// 		firstDate = new Date(oneDate[0].value),
+// 		secondDate = new Date(twoDate[0].value);
 
-   res = Math.ceil(Math.abs(secondDate.getTime() - firstDate.getTime()) / (1000 * 3600 * 24));
-   output[0].value = res + ' дней';
-});
+// 	res = Math.ceil(
+// 		Math.abs(secondDate.getTime() - firstDate.getTime()) /
+// 			(1000 * 3600 * 24)
+// 	);
+// 	output[0].value = res + ' дней';
+// });
+
+// Выведите на экран правильное сообщение, которое берет значение из input
+
+let age = document.getElementById('age');
+
+function showUser(surname, name) {
+	alert(`Пользователь ${surname} ${name}, его возраст ${this.value}`);
+}
+
+showUser.apply(age, ['Пупкин', 'Вася']);
