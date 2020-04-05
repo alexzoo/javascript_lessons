@@ -78,14 +78,14 @@ class Options {
 		this.textAlign = textAlign;
 	}
 
-	createDiv(text, style) {
+	createDiv(text) {
 		let div = document.createElement('div');
-		div.style.cssText = style;
+		div.style.cssText = `height: ${this.height}; width: ${this.width}; background: ${this.bg}; fontSize: ${this.fontSize}; textAlign: ${this.textAlign}`;
 		div.innerHTML = text;
 		return div;
 	}
 }
 
 let newOptions = new Options('500', '200', 'red', '15', 'center');
-let newDiv = newOptions.createDiv('test', 'color: green');
+let newDiv = newOptions.createDiv('test');
 console.log(newDiv);
