@@ -1,27 +1,29 @@
+// 1) Привести свой проект в соответствие с ES6 (в проекте Yoga, то, что можно преобразовать)
+
 'use strict';
 
-window.addEventListener('DOMContentLoaded', function() {
+window.addEventListener('DOMContentLoaded', () => {
 	let tab = document.querySelectorAll('.info-header-tab'),
 		info = document.querySelector('.info-header'),
 		tabContent = document.querySelectorAll('.info-tabcontent');
 
-	function hideTabContent(a) {
+	let hideTabContent = a => {
 		for (let i = a; i < tabContent.length; i++) {
 			tabContent[i].classList.remove('show');
 			tabContent[i].classList.add('hide');
 		}
-	}
+	};
 
 	hideTabContent(1);
 
-	function showTabContent(b) {
+	let showTabContent = b => {
 		if (tabContent[b].classList.contains('hide')) {
 			tabContent[b].classList.remove('hide');
 			tabContent[b].classList.add('show');
 		}
-	}
+	};
 
-	info.addEventListener('click', function(event) {
+	info.addEventListener('click', event => {
 		let target = event.target;
 		if (target && target.classList.contains('info-header-tab')) {
 			for (let i = 0; i < tab.length; i++) {
@@ -41,11 +43,11 @@ window.addEventListener('DOMContentLoaded', function() {
 	// 	Изменить скрипт так, чтобы в таком случае выводилось: 00:00:00
 	//  Необходимо подставлять 0 перед значениями, которые состоят из одной цифры (из 4:6:50 сделает 04:06:50)
 
-	function addZero(num) {
+	let addZero = num => {
 		return num < 10 ? '0' + num : num;
-	}
+	};
 
-	function getTimeReamining(endtime) {
+	let getTimeReamining = endtime => {
 		let t = Date.parse(endtime) - Date.parse(new Date()),
 			seconds = addZero(Math.floor((t / 1000) % 60)),
 			minutes = addZero(Math.floor((t / 1000 / 60) % 60)),
@@ -57,16 +59,10 @@ window.addEventListener('DOMContentLoaded', function() {
 			minutes: minutes,
 			seconds: seconds
 		};
-	}
+	};
 
-	function setClock(id, endtime) {
-		let timer = document.getElementById(id),
-			hours = timer.querySelector('.hours'),
-			minutes = timer.querySelector('.minutes'),
-			seconds = timer.querySelector('.seconds'),
-			timeInterval = setInterval(updateClock, 1000);
-
-		function updateClock() {
+	let setClock = (id, endtime) => {
+		let updateClock = () => {
 			let t = getTimeReamining(endtime);
 			hours.textContent = t.hours;
 			minutes.textContent = t.minutes;
@@ -75,8 +71,14 @@ window.addEventListener('DOMContentLoaded', function() {
 			if (t.total <= 0) {
 				clearInterval(timeInterval);
 			}
-		}
-	}
+		};
+
+		let timer = document.getElementById(id),
+			hours = timer.querySelector('.hours'),
+			minutes = timer.querySelector('.minutes'),
+			seconds = timer.querySelector('.seconds'),
+			timeInterval = setInterval(updateClock, 1000);
+	};
 
 	setClock('timer', dedline);
 
@@ -92,7 +94,7 @@ window.addEventListener('DOMContentLoaded', function() {
 		document.body.style.overflow = 'hidden';
 	});
 
-	close.addEventListener('click', function() {
+	close.addEventListener('click', () => {
 		overlay.style.display = 'none';
 		more.classList.remove('more-splash');
 		document.body.style.overflow = '';
@@ -110,3 +112,15 @@ window.addEventListener('DOMContentLoaded', function() {
 		});
 	});
 });
+
+// 2) Используя синтаксис ES6 в отдельном документе:
+
+// ·        Создать класс options
+
+// ·        Он должен содержать свойства: height, width, bg, fontSize, textAlign
+
+// ·        Он должен содержать метод, создающий новый div на странице, записывающий в него любой текст и при помощи cssText изменять свой стиль из переданных параметров
+
+// ·        Создать новый объект через класс
+
+// ·        Вызвать его метод и получить элемент на странице
