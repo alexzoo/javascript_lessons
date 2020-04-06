@@ -103,6 +103,7 @@ optionalExpensesItem.forEach((item) => {
 });
 
 optionalExpensesBtn.addEventListener('click', function () {
+	optionalExpensesValue.textContent = '';
 	for (let i = 0; i <= optionalExpensesItem.length; i++) {
 		let opt = optionalExpensesItem[i].value;
 		appData.optionalExpenses[i] = opt;
