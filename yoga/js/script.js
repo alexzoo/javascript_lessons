@@ -7,7 +7,7 @@ window.addEventListener('DOMContentLoaded', () => {
 		info = document.querySelector('.info-header'),
 		tabContent = document.querySelectorAll('.info-tabcontent');
 
-	let hideTabContent = a => {
+	let hideTabContent = (a) => {
 		for (let i = a; i < tabContent.length; i++) {
 			tabContent[i].classList.remove('show');
 			tabContent[i].classList.add('hide');
@@ -16,14 +16,14 @@ window.addEventListener('DOMContentLoaded', () => {
 
 	hideTabContent(1);
 
-	let showTabContent = b => {
+	let showTabContent = (b) => {
 		if (tabContent[b].classList.contains('hide')) {
 			tabContent[b].classList.remove('hide');
 			tabContent[b].classList.add('show');
 		}
 	};
 
-	info.addEventListener('click', event => {
+	info.addEventListener('click', (event) => {
 		let target = event.target;
 		if (target && target.classList.contains('info-header-tab')) {
 			for (let i = 0; i < tab.length; i++) {
@@ -43,11 +43,11 @@ window.addEventListener('DOMContentLoaded', () => {
 	// 	Изменить скрипт так, чтобы в таком случае выводилось: 00:00:00
 	//  Необходимо подставлять 0 перед значениями, которые состоят из одной цифры (из 4:6:50 сделает 04:06:50)
 
-	let addZero = num => {
+	let addZero = (num) => {
 		return num < 10 ? '0' + num : num;
 	};
 
-	let getTimeReamining = endtime => {
+	let getTimeReamining = (endtime) => {
 		let t = Date.parse(endtime) - Date.parse(new Date()),
 			seconds = addZero(Math.floor((t / 1000) % 60)),
 			minutes = addZero(Math.floor((t / 1000 / 60) % 60)),
@@ -57,7 +57,7 @@ window.addEventListener('DOMContentLoaded', () => {
 			total: t,
 			hours: hours,
 			minutes: minutes,
-			seconds: seconds
+			seconds: seconds,
 		};
 	};
 
@@ -88,7 +88,7 @@ window.addEventListener('DOMContentLoaded', () => {
 		overlay = document.querySelector('.overlay'),
 		close = document.querySelector('.popup-close');
 
-	more.addEventListener('click', function() {
+	more.addEventListener('click', function () {
 		overlay.style.display = 'block';
 		this.classList.add('more-splash');
 		document.body.style.overflow = 'hidden';
@@ -104,11 +104,40 @@ window.addEventListener('DOMContentLoaded', () => {
 
 	let buttonsBlock = document.querySelectorAll('.description-btn');
 
-	buttonsBlock.forEach(function(item) {
-		item.addEventListener('click', function(event) {
+	buttonsBlock.forEach(function (item) {
+		item.addEventListener('click', function (event) {
 			overlay.style.display = 'block';
 			this.classList.add('more-splash');
 			document.body.style.overflow = 'hidden';
 		});
+	});
+
+	// Form
+
+	let message = {
+		loading: 'Загрузка...',
+		success: 'Спасибо! Скоро мы с вами свяжемся!',
+		failure: 'Что-то пошло не так...',
+	};
+
+	let form = document.querySelector('.main-form'),
+		input = form.getElementsByTagName('input'),
+		statusMessage = document.createElement('div');
+
+	statusMessage.classList.add('status');
+
+	form.addEventListener('submit', function (event) {
+		event.preventDefault();
+		form.appendChild(statusMessage);
+
+		let request = new XMLHttpRequest();
+		request.open('POST', 'server.php');
+		request.setRequestHeader(
+			'Content-Type',
+			'application/x-www-form-urlencoded'
+		);
+
+		let formData = new FormData(form);
+		request.send(formData);
 	});
 });
