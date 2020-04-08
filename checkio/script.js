@@ -71,24 +71,36 @@
 
 // Даны две строки со словами, разделенными запятыми. Попробуйте найти что общего между этими строками. Слова внутри каждой строки не повторяются.
 // Ваша функция должна находить все слова, которые появляются в обеих строках. Результат должен быть представлен, как строка со словами разделенными запятыми и отсортированными в алфавитном порядке.
-// two
-// two, three
 
-function commonWords(str, substr) {
-	let word = [];
+// function commonWords(str, substr) {
+// 	let word = [];
 
-	let arr1 = str.split(','),
-		arr2 = substr.split(',');
+// 	let arr1 = str.split(','),
+// 		arr2 = substr.split(',');
 
-	for (let i in arr2) {
-		if (arr1.includes(arr2[i])) {
-			word.push(arr2[i]);
-			word.sort();
-		}
-		continue;
+// 	for (let i in arr2) {
+// 		if (arr1.includes(arr2[i])) {
+// 			word.push(arr2[i]);
+// 			word.sort();
+// 		}
+// 		continue;
+// 	}
+
+// 	return word.join(',');
+// }
+
+// console.log(commonWords('one,two,three', 'four,five,one,two,six,three'));
+
+// Дан массив чисел (float или/и int). Вам нужно найти разницу между самым большим (максимум) и самым малым (минимум) элементом. Ваша функция должна уметь работать с неопределенным количеством аргументов. Если аргументов нет, то функция возвращает 0 (ноль).
+
+function mostNumbers(...numbers) {
+	if (numbers == 0) {
+		return 0;
 	}
+	let max = Math.max.apply(Array, numbers),
+		min = Math.min.apply(Array, numbers);
 
-	return word.join(',');
+	return Math.round((max - min) * 1000) / 1000;
 }
 
-console.log(commonWords('one,two,three', 'four,five,one,two,six,three'));
+console.log(mostNumbers());
