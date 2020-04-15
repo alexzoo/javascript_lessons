@@ -7,34 +7,34 @@ window.addEventListener('DOMContentLoaded', function () {
 		e.preventDefault();
 
 		let formData = new FormData(form);
-		formData.append('id', Math.random());
+		// formData.append('id', Math.random());
 
-		let obj = {};
-		formData.forEach((value, key) => {
-			obj[key] = value;
-		});
+		// let obj = {};
+		// formData.forEach((value, key) => {
+		// 	obj[key] = value;
+		// });
 
 		// let json = JSON.stringify(obj);
 
-		// const request = new XMLHttpRequest();
-		// request.open('POST', 'http://localhost:3000/people');
-		// request.setRequestHeader('Content-type', 'application/json; charset=utf-8');
-		// request.send(json);
-		// request.addEventListener('load', () => {
-		// 	if (request.status == 200) {
-		// 		let data = JSON.parse(request.response);
-		// 		console.log(data);
-		// 		// createCards(data);
-		// 	} else {
-		// 		console.error('Что то не так');
-		// 	}
-		// });
+		const request = new XMLHttpRequest();
+		request.open('POST', './api.php');
+		// request.setRequestHeader('Content-type', 'multipart/form-data');
+		request.send(formData);
+		request.addEventListener('load', () => {
+			if (request.status == 200) {
+				// let data = JSON.parse(request.response);
+				console.log(request.response);
+				// createCards(data);
+			} else {
+				console.error('Что то не так');
+			}
+		});
 
 		// getResourse('http://localhost:3000/people', obj)
 		// 	.then((data) => createCards(data.data))
 		// 	.catch((err) => console.error(err));
 
-		axios.post('http://localhost:3000/people', obj);
+		// axios.post('http://localhost:3000/people', obj);
 
 		// this.remove();
 	}
