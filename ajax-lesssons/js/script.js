@@ -14,46 +14,55 @@ window.addEventListener('DOMContentLoaded', function () {
 			obj[key] = value;
 		});
 
-		let json = JSON.stringify(obj);
+		// let json = JSON.stringify(obj);
 
-		const request = new XMLHttpRequest();
-		request.open('POST', 'http://localhost:3000/people');
-		request.setRequestHeader('Content-type', 'application/json; charset=utf-8');
-		request.send(json);
-		request.addEventListener('load', () => {
-			if (request.status == 200) {
-				let data = JSON.parse(request.response);
-				console.log(data);
-				// createCards(data);
-			} else {
-				console.error('Что то не так');
-			}
-		});
+		// const request = new XMLHttpRequest();
+		// request.open('POST', 'http://localhost:3000/people');
+		// request.setRequestHeader('Content-type', 'application/json; charset=utf-8');
+		// request.send(json);
+		// request.addEventListener('load', () => {
+		// 	if (request.status == 200) {
+		// 		let data = JSON.parse(request.response);
+		// 		console.log(data);
+		// 		// createCards(data);
+		// 	} else {
+		// 		console.error('Что то не так');
+		// 	}
+		// });
 
-		// getResourse('http://localhost:3000/people')
+		// getResourse('http://localhost:3000/people', obj)
 		// 	.then((data) => createCards(data.data))
 		// 	.catch((err) => console.error(err));
+
+		axios.post('http://localhost:3000/people', obj);
 
 		// this.remove();
 	}
 
 	form.addEventListener('submit', (e) => req(e), { once: true });
 
-	// async function getResourse(url) {
-	// 	const res = await fetch(`${url}`);
-	// 	if (!res.ok) {
-	// 		throw new Error(`Could not fetch ${url}, status: ${res.status}`);
-	// 	}
-	// 	return await res.json();
-	// }
+	async function getResourse(url, data) {
+		const res = await fetch(`${url}`, {
+			method: 'POST',
+			headers: {
+				'Content-type': 'application/json',
+			},
+			body: JSON.stringify(data),
+		});
 
-	async function getResourse(url) {
-		const res = await axios(`${url}`);
-		if (res.status !== 200) {
+		if (!res.ok) {
 			throw new Error(`Could not fetch ${url}, status: ${res.status}`);
 		}
-		return res;
+		return await res.json();
 	}
+
+	// async function getResourse(url) {
+	// 	const res = await axios(`${url}`);
+	// 	if (res.status !== 200) {
+	// 		throw new Error(`Could not fetch ${url}, status: ${res.status}`);
+	// 	}
+	// 	return res;
+	// }
 
 	function createCards(response) {
 		response.forEach((item) => {
