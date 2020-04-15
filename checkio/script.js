@@ -155,9 +155,8 @@ let data = [
 ];
 
 function biggerPrice(limit, data) {
-	const res = data.sort((a, b) => parseInt(b.price) - parseInt(a.price));
-	let slice = res.slice(0, limit);
-	return slice;
+	const res = data.sort((a, b) => parseInt(b.price) - parseInt(a.price)).slice(0, limit);
+	return res;
 }
 
 console.log(biggerPrice(2, data));
