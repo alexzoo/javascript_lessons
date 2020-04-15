@@ -93,14 +93,71 @@
 
 // Дан массив чисел (float или/и int). Вам нужно найти разницу между самым большим (максимум) и самым малым (минимум) элементом. Ваша функция должна уметь работать с неопределенным количеством аргументов. Если аргументов нет, то функция возвращает 0 (ноль).
 
-function mostNumbers(...numbers) {
-	if (numbers == 0) {
-		return 0;
-	}
-	let max = Math.max.apply(Array, numbers),
-		min = Math.min.apply(Array, numbers);
+// function mostNumbers(...numbers) {
+// 	if (numbers == 0) {
+// 		return 0;
+// 	}
+// 	let max = Math.max.apply(Array, numbers),
+// 		min = Math.min.apply(Array, numbers);
 
-	return Math.round((max - min) * 1000) / 1000;
+// 	return Math.round((max - min) * 1000) / 1000;
+// }
+
+// console.log(mostNumbers());
+
+// You have a sequence of strings, and you’d like to determine the most frequently occurring string in the sequence. It can be only one.
+
+// function mostFrequent(data) {
+// 	let obj = {},
+// 		mostFreq = 0,
+// 		which = [];
+
+// 	data.forEach((arrayElement) => {
+// 		if (!obj[arrayElement]) {
+// 			obj[arrayElement] = 1;
+// 		} else {
+// 			obj[arrayElement]++;
+// 		}
+
+// 		if (obj[arrayElement] > mostFreq) {
+// 			mostFreq = obj[arrayElement];
+// 			which = [arrayElement];
+// 		} else if (obj[arrayElement] === mostFreq) {
+// 			which.push(arrayElement);
+// 		}
+// 	});
+
+// 	return which.toString();
+// }
+
+// console.log(mostFrequent(['a', 'a', 'bi', 'bi', 'bi']));
+
+// function threeWords(data) {
+// 	let regexp = /[a-z]+ [a-z]+ [a-z]+/gi;
+
+// 	return regexp.test(data);
+// }
+
+// console.log(threeWords('He is 123 man'));
+
+// --------------------------------------------
+// Дана таблица всех доступных продуктов на складе. Данные представлены в виде массива объектов (array of objects)
+
+// Ваша миссия тут - это найти ТОП самых дорогих товаров. Количество товаров, которые мы ищем, будет передано в первом аргументе, а сами данные по товарам будут переданы вторым аргументом.
+// Вх. данные: Число и массив объектов (Integer and array of objects). У каждого объекта 2 атрибута "name" и "price"
+// Вых. данные: Такой же как и второй аргумент.
+
+let data = [
+	{ name: 'bread', price: 100 },
+	{ name: 'wine', price: 138 },
+	{ name: 'meat', price: 15 },
+	{ name: 'water', price: 1 },
+];
+
+function biggerPrice(limit, data) {
+	const res = data.sort((a, b) => parseInt(b.price) - parseInt(a.price));
+	let slice = res.slice(0, limit);
+	return slice;
 }
 
-console.log(mostNumbers());
+console.log(biggerPrice(2, data));
