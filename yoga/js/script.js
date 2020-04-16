@@ -165,7 +165,8 @@ window.addEventListener('DOMContentLoaded', () => {
 
 			sendData('server.php', formData)
 				.then((data) => console.log(data))
-				.catch((err) => console.error(err));
+				.then((statusMessage.innerHTML = message.success))
+				.catch((statusMessage.innerHTML = message.failure));
 
 			// let obj = {};
 			// formData.forEach((value, key) => {
