@@ -12,8 +12,12 @@ inputRub.addEventListener('input', () => {
 
 	fetch('js/current.json')
 		.then((data) => data.json())
-		.then((data) => (inputUsd.value = inputRub.value / data.usd))
-		.catch((inputUsd.value = 'Что-то пошло не так!'));
+		.then((data) => {
+			inputUsd.value = inputRub.value / data.usd;
+		})
+		.catch(() => {
+			inputUsd.value = 'Что-то пошло не так!';
+		});
 
 	// request.addEventListener('readystatechange', function () {
 	// 	if (request.readyState === 4 && request.status == 200) {

@@ -165,8 +165,17 @@ window.addEventListener('DOMContentLoaded', () => {
 
 			sendData('server.php', formData)
 				.then((data) => console.log(data))
-				.then((statusMessage.innerHTML = message.success))
-				.catch((statusMessage.innerHTML = message.failure));
+				.then(() => {
+					statusMessage.innerHTML = message.success;
+				})
+				.catch(() => {
+					statusMessage.innerHTML = message.failure;
+				})
+				.finally(() =>
+					setTimeout(() => {
+						statusMessage.remove();
+					}, 5000)
+				);
 
 			// let obj = {};
 			// formData.forEach((value, key) => {
@@ -191,5 +200,14 @@ window.addEventListener('DOMContentLoaded', () => {
 				input[i].value = '';
 			}
 		});
+
+		// Slider
+
+		let slideIndex = 1,
+			slides = document.querySelectorAll('.slider-item'),
+			prev = document.querySelector('.prev'),
+			next = document.querySelector('.next'),
+			dotsWrap = document.querySelector('slider-dots'),
+			dot = document.querySelectorAll('.dot');
 	}
 });
