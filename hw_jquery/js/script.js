@@ -10,26 +10,13 @@
 'use strict';
 
 $(document).ready(function () {
-	$('.main_btna, .main_btn, #sheldure').on('click', function () {
-		$('.overlay').animate(
-			{
-				opacity: 'show',
-			},
-			3000
-		);
-		$('.modal').animate(
-			{
-				display: 'toggle',
-				top: '100',
-			},
-			3000
-		);
+	$('.main_btna, .main_btn, a[href="#sheldure"]').click(function () {
+		$('.overlay').fadeIn(1000);
+		$('.modal').slideDown(1000);
 	});
 
-	$('.close').animate(
-		{
-			top: '-100',
-		},
-		3000
-	);
+	$('.close').click(function () {
+		$('.modal').slideUp(1000);
+		$('.overlay').fadeOut(1000);
+	});
 });
