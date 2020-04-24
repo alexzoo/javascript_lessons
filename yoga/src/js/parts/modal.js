@@ -30,4 +30,4 @@ function modals() {
 	});
 }
 
-module.export = modals;
+module.exports = modals;

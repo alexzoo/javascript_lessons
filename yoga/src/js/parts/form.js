@@ -90,4 +90,4 @@ function form() {
 	}
 }
 
-module.export = form;
+module.exports = form;
