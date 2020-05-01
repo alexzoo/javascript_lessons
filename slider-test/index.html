@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tiny-slider/2.9.2/tiny-slider.css">
+</head>
+
+<body>
+    <div class="my-slider">
+        <div>
+            <img src="https://lh3.googleusercontent.com/proxy/abfmXoUVm0Xb62fQ9DNsT_yaslVXaF8rF9pcEHox3tyA4DeMXzC0w2u9mxR1NibPr_GxWxbulsrPfGUUHYxsnUEGj4sMh_XA2iFn486w5DkeUOivWBugLco8I1nQ1fUK"
+                alt="">
+            <img src="https://bipbap.ru/wp-content/uploads/2017/10/0_8eb56_842bba74_XL-640x400.jpg" alt="">
+
+            <img src="https://vjoy.cc/wp-content/uploads/2019/06/1-12.jpg" alt="">
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tiny-slider/2.9.2/min/tiny-slider.js"></script>
+    <script type="module">
+        import { tns } from './src/tiny-slider.js';
+
+        var slider = tns({
+            container: '.my-slider',
+            items: 3,
+            slideBy: 'page',
+            autoplay: true
+        });
+    </script>
+</body>
+
+</html>
