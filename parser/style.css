@@ -1,0 +1,22 @@
+.container {
+	margin: 0 auto;
+	width: 960px;
+	display: flex;
+	flex-wrap: wrap;
+}
+
+.item {
+	display: flex;
+	flex-direction: column;
+	width: 220px;
+	border: 1px #000 solid;
+	margin: 5px;
+}
+.item__title {
+	font-size: 14px;
+}
+
+.item__price {
+	font-size: 20px;
+	color: red;
+}
