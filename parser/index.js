@@ -21,9 +21,9 @@ document.addEventListener('DOMContentLoaded', () => {
 			});
 			console.log(goods);
 
-			createCard(goods);
+			return goods;
 		})
-		// .then((data) => createCard(data))
+		.then((data) => createCard(data))
 		.catch(function (err) {
 			console.log('Произошла ошибка при загрузке: ', err);
 		});
