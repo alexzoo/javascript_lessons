@@ -1,0 +1,42 @@
+body {
+	padding: 0;
+	margin: 0;
+	font: normal 15px/1.5em 'Arial', sans-serif;
+	color: #272c2f;
+	line-height: 22px;
+	outline: none;
+	border: none;
+}
+
+.container {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	width: 600px;
+	margin: 0 auto;
+	align-items: center;
+}
+
+.logo {
+	margin-top: 100px;
+}
+
+.logo img {
+	width: 200px;
+}
+
+.search {
+	margin: 10px;
+}
+
+.search-field {
+	width: 400px;
+	border-color: red;
+	padding: 15px;
+	border-radius: 5px;
+}
+
+.btn-submit {
+	color: green;
+	padding: 15px;
+}
