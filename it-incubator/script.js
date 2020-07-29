@@ -28,7 +28,8 @@ buttonSearch.addEventListener('click', () => {
 
 function superSum(a, b) {
 	let sum = +a + +b;
-	alert(sum);
+	// alert(sum);
+	console.log(sum);
 }
 
 superSum(23.03, -0, 57);
