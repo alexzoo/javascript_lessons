@@ -57,7 +57,7 @@ arrObjects[1] = {
 	age: 21,
 };
 
-arrObjects[3] = {
+arrObjects[2] = {
 	name: 'Sasha',
 	age: 22,
 };
